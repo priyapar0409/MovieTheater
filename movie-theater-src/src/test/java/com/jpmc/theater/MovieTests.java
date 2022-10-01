@@ -30,7 +30,7 @@ public class MovieTests {
         //Avoiding Special movie discounts by seeting the special to anything but 1
         Movie spiderMan = new Movie("Spider-Man: No Way Home", Duration.ofMinutes(90),10, 2);
         
-		//Any movies showing on 7th, you'll get 1$ discount - setting the date to Oct 7th, avoiding 11am to 4pm by explicitly setting to 9 am
+	//Any movies showing on 7th, you'll get 1$ discount - setting the date to Oct 7th, avoiding 11am to 4pm by explicitly setting to 9 am
         Showing showing1 = new Showing(spiderMan, 5, LocalDateTime.of(LocalDate.parse("2022-10-07"), LocalTime.of(9, 0)));
         assertEquals(9, spiderMan.calculateTicketPrice(showing1));
         
