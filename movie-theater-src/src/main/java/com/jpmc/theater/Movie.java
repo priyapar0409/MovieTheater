@@ -41,6 +41,7 @@ public class Movie {
 
     private double getDiscount(Showing showing) {
         
+        //We will be using an array list to save all the applicable discounts.
     	List<Double> discountList = new ArrayList<Double>();
         
     	//Converting all existing double discount variables to Double so they can be used along with Lists and comparators for easier comparision.
@@ -64,7 +65,6 @@ public class Movie {
 //        }
 
         Double timeDiscount  = Double.valueOf(0);
-        //(int year, int month, int dayOfMonth, int hour, int minute) {
         if (showing.getStartTime().isAfter(LocalDateTime.of(showing.getStartTime().getYear(), showing.getStartTime().getMonth(), showing.getStartTime().getDayOfMonth(), 10, 59))
         		&& showing.getStartTime().isBefore(LocalDateTime.of(showing.getStartTime().getYear(), showing.getStartTime().getMonth(), showing.getStartTime().getDayOfMonth(), 16, 00))) {
         	timeDiscount = ticketPrice * 0.25;  //Any movies showing starting between 11AM ~ 4pm, you'll get 25% discount
@@ -87,7 +87,7 @@ public class Movie {
         
         if(discountList.size()>0)
         {
-        	//Stream all the saved discounts and pick the maximum.
+        	//Stream all the saved discounts and pick the maximum using the comparator of type Double and the value of the Double object in the stream.
         	biggestDiscount = discountList.stream().max(Comparator.comparing(Double::valueOf)).get();
         }
         return biggestDiscount;
